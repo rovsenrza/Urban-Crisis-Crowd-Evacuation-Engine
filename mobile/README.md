@@ -66,6 +66,15 @@ Vebdən dəyişmədən köçürülən fayllar: `design/tokens.ts`, `api/types.ts
 
 Server SOS-u sürət həddi və ya dublikat filtri ilə rədd edərsə (`429`), tətbiq vebdəki kimi banner göstərir: neçə saniyədən sonra təkrar cəhd etmək olar və ya bu yerdən SOS-un artıq qəbul olunduğu.
 
+## Android
+
+Kod platformadan asılı deyil, lakin Android-də **sınanmayıb** (bu maşında Android emulyatoru yoxdur). Bilinənlər:
+
+- Emulyatorda backend ünvanı avtomatik `http://10.0.2.2:8000` olur (`src/config.ts`); real telefonda `EXPO_PUBLIC_API_URL` verin.
+- Expo Go-da xəritə işləyir. Müstəqil yığımda (`eas build`, `expo run:android`) Google Maps API açarı lazımdır: `app.json` → `android.config.googleMaps.apiKey`.
+- İstehsalat yığımında Android açıq HTTP-ni bloklayır; backend HTTPS arxasında olmalıdır.
+- Xəritə Apple Maps əvəzinə Google Maps olacaq; marker və xətlərin görünüşü ayrıca yoxlanılmalıdır.
+
 ## Hələ yoxdur
 
 Oflayn xəritə plitələri, push bildirişlər, fon rejimində mövqe, Android-də sınaq, avtomatik testlər, mağaza üçün ikon və açılış şəkli (şablondakılar qalıb).

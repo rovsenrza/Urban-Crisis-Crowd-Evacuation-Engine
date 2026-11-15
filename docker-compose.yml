@@ -1,0 +1,37 @@
+# Bir əmrlə işə salma:  docker compose up --build
+#   Vətəndaş tətbiqi:  http://localhost:5173/citizen
+#   Dispetçer paneli:  http://localhost:5173/operator
+#   API sənədləri:     http://localhost:8000/docs
+# Portlar məşğuldursa:  FRONTEND_PORT=5180 BACKEND_PORT=8010 docker compose up --build
+services:
+  backend:
+    build: ./backend
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      DATABASE_URL: sqlite:////data/evac.db
+      CORS_ORIGINS: http://localhost:5173,http://127.0.0.1:5173
+      # nginx real müştəri ünvanını X-Forwarded-For ilə ötürür (sürət həddi üçün).
+      # İstehsalatda backend portunu (8000) birbaşa açmayın: başlığı saxtalaşdırmaq olar.
+      TRUST_FORWARDED_FOR: "true"
+    volumes:
+      - evac-data:/data
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/v1/health')"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  frontend:
+    build: ./frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "${FRONTEND_PORT:-5173}:80"
+
+volumes:
+  evac-data:

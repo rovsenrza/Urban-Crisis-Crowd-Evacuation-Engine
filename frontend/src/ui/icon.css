@@ -1,0 +1,9 @@
+.ui-icon {
+  flex: none;
+  width: var(--size-icon);
+  height: var(--size-icon);
+}
+
+.ui-icon--sm { width: var(--size-icon-sm); height: var(--size-icon-sm); }
+.ui-icon--lg { width: var(--size-icon-lg); height: var(--size-icon-lg); }
+.ui-icon--xl { width: var(--size-icon-xl); height: var(--size-icon-xl); }

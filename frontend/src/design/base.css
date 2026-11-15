@@ -1,0 +1,142 @@
+/* Reset, type and focus. Every value comes from the tokens (see tokens.ts). */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-family);
+  font-size: var(--text-size);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-body);
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overflow-wrap: break-word;
+}
+
+[data-density] {
+  font-size: var(--text-size);
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+dl,
+dd,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: var(--font-weight-bold);
+  line-height: var(--leading-snug);
+}
+
+h1 {
+  font-size: var(--font-size-xl);
+}
+
+h2 {
+  font-size: var(--font-size-lg);
+}
+
+h3 {
+  font-size: var(--font-size-md);
+}
+
+a {
+  color: var(--color-accent);
+  text-underline-offset: var(--space-1);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* One focus ring for every control. It never animates. */
+:focus-visible {
+  outline: var(--size-focus-ring) solid var(--focus-color, var(--color-accent));
+  outline-offset: var(--size-border-strong);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: var(--size-border);
+  height: var(--size-border);
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.muted {
+  color: var(--color-ink-muted);
+}
+
+/* Tones shared by icons, badges and rows. */
+.ui-tone-neutral { color: var(--color-ink-muted); }
+.ui-tone-accent { color: var(--color-accent); }
+.ui-tone-danger { color: var(--color-danger-text); }
+.ui-tone-ok { color: var(--color-ok-text); }
+.ui-tone-warn { color: var(--color-warn-text); }
+.ui-tone-priority { color: var(--color-priority-text); }
+
+@keyframes ui-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ui-pulse {
+  50% { opacity: 0.45; }
+}
+
+@keyframes ui-rise {
+  from { opacity: 0; transform: translateY(var(--space-4)); }
+}
+
+@keyframes ui-fade {
+  from { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

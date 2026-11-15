@@ -1,0 +1,114 @@
+/* Pieces shared by both products. The launch screen's styles live inline in index.html. */
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: var(--size-top-bar);
+}
+
+.topbar h1 {
+  flex: 1;
+  min-width: 0;
+}
+
+.connection {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--color-ok-text);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.connection--off {
+  color: var(--color-warn-text);
+}
+
+.notfound {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding-bottom: var(--space-6);
+}
+
+.notfound__alt {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--size-tap);
+}
+
+.hint {
+  color: var(--color-ink-muted);
+  font-size: var(--font-size-sm);
+  line-height: var(--leading-snug);
+}
+
+.eyebrow {
+  color: var(--color-ink-muted);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.badges:empty {
+  display: none;
+}
+
+.note {
+  font-size: var(--font-size-sm);
+  line-height: var(--leading-snug);
+}
+
+.note--warn {
+  color: var(--color-warn-text);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Label / value pairs */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.facts > div {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.facts__wide {
+  grid-column: 1 / -1;
+}
+
+.facts dt {
+  color: var(--color-ink-muted);
+  font-size: var(--font-size-sm);
+}
+
+.facts dd {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-snug);
+}
+
+[data-density="compact"] .facts dd {
+  font-size: var(--font-size-md);
+}
+
+.facts dd .muted {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+}

@@ -1,0 +1,84 @@
+.ui-sheet {
+  background: var(--color-bg);
+  color: var(--color-ink);
+}
+
+/* Docked: stays beside the map and never blocks it. */
+.ui-sheet--docked {
+  position: absolute;
+  z-index: var(--layer-sheet);
+  right: var(--space-2);
+  bottom: var(--space-2);
+  left: var(--space-2);
+  max-height: 60%;
+  overflow-y: auto;
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-raised);
+  animation: ui-rise var(--duration-base) var(--easing);
+}
+
+@media (min-width: 768px) {
+  .ui-sheet--docked {
+    right: auto;
+    bottom: var(--space-4);
+    left: var(--space-4);
+    width: var(--size-sheet-max);
+  }
+}
+
+@media (min-width: 1100px) {
+  /* Side placement: a column of the layout instead of a floating card. */
+  .ui-sheet--side {
+    position: static;
+    width: var(--size-panel);
+    max-height: none;
+    border-left: var(--size-border) solid var(--color-line);
+    border-radius: 0;
+    box-shadow: none;
+    animation: none;
+  }
+}
+
+/* Modal: bottom sheet on phones, centred card on wide screens. */
+.ui-sheet--modal {
+  width: 100%;
+  max-width: 100%;
+  max-height: 85dvh;
+  margin: auto 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  box-shadow: var(--shadow-overlay);
+}
+
+.ui-sheet--modal[open] {
+  animation: ui-rise var(--duration-base) var(--easing);
+}
+
+.ui-sheet--modal::backdrop {
+  background: var(--color-scrim);
+}
+
+.ui-sheet__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  padding-bottom: calc(var(--space-4) + env(safe-area-inset-bottom));
+}
+
+.ui-sheet__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+@media (min-width: 768px) {
+  .ui-sheet--modal {
+    max-width: var(--size-sheet-max);
+    margin: auto;
+    border-radius: var(--radius-lg);
+  }
+}

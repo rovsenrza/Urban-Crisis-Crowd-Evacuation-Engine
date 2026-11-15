@@ -1,0 +1,63 @@
+.ui-list > li + li {
+  border-top: var(--size-border) solid var(--color-line);
+}
+
+.ui-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  min-height: var(--row-height);
+  padding: var(--space-3) var(--row-padding);
+  border: 0;
+  background: transparent;
+  color: var(--color-ink);
+  text-align: start;
+  text-decoration: none;
+}
+
+.ui-row--action:hover {
+  background: var(--color-surface);
+}
+
+.ui-row--selected {
+  background: var(--color-accent-soft);
+}
+
+.ui-row__icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.ui-row__main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 0;
+}
+
+.ui-row__title {
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-snug);
+}
+
+.ui-row__subtitle {
+  color: var(--color-ink-muted);
+  font-size: var(--font-size-sm);
+  line-height: var(--leading-snug);
+}
+
+.ui-row__trailing {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-ink-muted);
+  font-size: var(--font-size-sm);
+}
+
+.ui-row > .ui-icon {
+  color: var(--color-ink-muted);
+}

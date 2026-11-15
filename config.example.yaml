@@ -1,0 +1,8 @@
+# İstəyə görə: hədləri YAML ilə vermək (CONFIG_FILE=config.yaml).
+# Açarlar kiçik hərflə yazılır; mühit dəyişənləri bu fayldan üstündür.
+sos_cluster_radius_m: 500
+sos_cluster_window_min: 5
+sos_cluster_min_count: 4
+reroute_occupancy_pct: 90
+critical_occupancy_pct: 95
+alert_cooldown_min: 10

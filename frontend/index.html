@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="az">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><rect width='48' height='48' rx='12' fill='%23111111'/><g fill='white'><path d='M10 10l9 2.5-6.5 6.5L10 10z'/><path d='M38 10l-2.5 9-6.5-6.5L38 10z'/><path d='M10 38l2.5-9 6.5 6.5L10 38z'/><path d='M38 38l-9-2.5 6.5-6.5L38 38z'/><circle cx='24' cy='24' r='4'/></g></svg>" />
+    <title>Şəhər Böhranı və Evakuasiya Sistemi</title>
+    <!-- Design tokens as CSS custom properties, generated from src/design/tokens.ts at build time. -->
+    <style id="tokens">/*__TOKENS__*/</style>
+    <!--
+      Critical styles for the launch screen. They are inlined so the first
+      paint is already the launch screen; React renders the same markup
+      (src/shell/Launch.tsx) while a session starts, so there is no jump.
+    -->
+    <style id="launch">
+      html, body, #root { height: 100%; margin: 0; }
+      body { background: var(--color-bg); color: var(--color-ink); }
+      .launch {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-5);
+        height: 100%;
+        background: var(--color-bg);
+      }
+      .mark { display: block; flex: none; width: var(--size-icon-xl); height: var(--size-icon-xl); color: var(--color-ink); }
+      .mark--lg { width: var(--space-8); height: var(--space-8); }
+      .mark__arrows { fill: var(--color-bg); }
+      .launch__bar {
+        display: block;
+        width: var(--space-8);
+        height: var(--space-1);
+        border-radius: var(--radius-full);
+        background: var(--color-surface-sunken);
+        overflow: hidden;
+      }
+      .launch__bar i {
+        display: block;
+        width: 40%;
+        height: 100%;
+        border-radius: var(--radius-full);
+        background: var(--color-ink);
+        animation: launch-slide 1.1s ease-in-out infinite alternate;
+      }
+      @keyframes launch-slide { to { transform: translateX(150%); } }
+      @media (prefers-reduced-motion: reduce) { .launch__bar i { animation: none; } }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <div class="launch" role="status" aria-label="Yüklənir…">
+        <svg class="mark mark--lg" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+          <rect width="48" height="48" rx="12" fill="currentColor" />
+          <g class="mark__arrows">
+            <path d="M10 10l9 2.5-6.5 6.5L10 10z" />
+            <path d="M38 10l-2.5 9-6.5-6.5L38 10z" />
+            <path d="M10 38l2.5-9 6.5 6.5L10 38z" />
+            <path d="M38 38l-9-2.5 6.5-6.5L38 38z" />
+            <circle cx="24" cy="24" r="4" />
+          </g>
+        </svg>
+        <span class="launch__bar"><i></i></span>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

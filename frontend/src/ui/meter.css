@@ -1,0 +1,46 @@
+.ui-meter {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.ui-meter__track {
+  position: relative;
+  flex: 1;
+  min-width: var(--space-7);
+  height: var(--size-meter);
+  border-radius: var(--radius-full);
+  background: var(--color-surface-sunken);
+  overflow: hidden;
+}
+
+.ui-meter--lg .ui-meter__track {
+  height: var(--size-meter-lg);
+}
+
+.ui-meter__fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--meter-fill);
+  transition: width var(--duration-slow) var(--easing);
+}
+
+.ui-meter__mark {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: var(--size-border-strong);
+  background: var(--color-ink);
+}
+
+.ui-meter__value {
+  flex: none;
+  color: var(--meter-text);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-snug);
+}
+
+.ui-meter--green { --meter-fill: var(--color-ok); --meter-text: var(--color-ok-text); }
+.ui-meter--yellow { --meter-fill: var(--color-warn); --meter-text: var(--color-warn-text); }
+.ui-meter--red { --meter-fill: var(--color-danger); --meter-text: var(--color-danger-text); }
